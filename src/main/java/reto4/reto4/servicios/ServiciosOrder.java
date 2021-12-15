@@ -78,11 +78,11 @@ public class ServiciosOrder {
         return OrderRepository.findByZone(zona);
     }
 
-    public List<ModeloOrder> orderSalesManByDate(String dateStr, int id) {
-        return OrderRepository.orderSalesManByDate(dateStr, id);
+    public List<ModeloOrder> ordersSalesManByDate(String dateStr, int id) {
+        return OrderRepository.ordersSalesManByDate(dateStr, id);
     }
  
-    public List<ModeloOrder> orderSalesManByState(String state, Integer id) {
-        return OrderRepository.orderSalesManByState(state, id);
+    public List<ModeloOrder> ordersSalesManByState(String state, Integer id) {
+        return OrderRepository.ordersSalesManByState(state, id);
     }
 }

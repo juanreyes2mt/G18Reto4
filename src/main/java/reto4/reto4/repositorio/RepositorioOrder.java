@@ -51,13 +51,13 @@ public class RepositorioOrder {
         return OrderCRUDRepository.findTopByOrderByIdDesc();
     }
 
-    public List<ModeloOrder> orderSalesManByDate(String dateStr, Integer id) {
+    public List<ModeloOrder> ordersSalesManByDate(String dateStr, Integer id) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         
         Query query = new Query();
         Criteria dateCriteria = Criteria.where("registerDay")
-            .get(LocalDate.parse(dataStr, dtf).minusDays(1).atStartOfDay())
-            .lt(LocalDate.parse(dataStr, dtf).plusDays(2).atStartOfDay())
+            .gte(LocalDate.parse(dateStr, dtf).minusDays(1).atStartOfDay())
+            .lt(LocalDate.parse(dateStr, dtf).plusDays(2).atStartOfDay())
             .and("salesMan.id"). is (id);
         
         query.addCriteria(dateCriteria);
@@ -65,7 +65,7 @@ public class RepositorioOrder {
         return orders;
     }
 
-    public List<ModeloOrder> orderSalesManByState(String dateStr, Integer id){
+    public List<ModeloOrder> ordersSalesManByState(String state, Integer id){
         Query query = new Query();
         Criteria dateCriteria = Criteria.where("salesMan.id").is(id)
             .and("status").is(state);
