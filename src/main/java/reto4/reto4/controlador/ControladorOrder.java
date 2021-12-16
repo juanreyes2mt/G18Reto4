@@ -55,9 +55,15 @@ public class ControladorOrder {
         return orderService.delete(id);
     }
 
-    //Ordenes de pedido asosciadas a los asesores
+    //Ordenes de pedido asociadas a zonas
     @GetMapping("/zona/{zona}")
     public List<ModeloOrder> findByZone(@PathVariable("zona") String zona){
        return orderService.findByZone(zona);
+    }
+
+    //Ordenes de pedido asociadas a vendedores
+    @GetMapping("/salesman/{id}")
+    public List<ModeloOrder> findBySalesMan(@PathVariable("id") Integer id){
+       return orderService.findBySalesMan(id);
     }
 }

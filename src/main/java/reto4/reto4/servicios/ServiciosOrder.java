@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import reto4.reto4.modelo.ModeloOrder;
+import reto4.reto4.modelo.ModeloUser;
 import reto4.reto4.repositorio.RepositorioOrder;
 
 @Service
@@ -84,5 +85,9 @@ public class ServiciosOrder {
  
     public List<ModeloOrder> ordersSalesManByState(String state, Integer id) {
         return OrderRepository.ordersSalesManByState(state, id);
+    }
+
+    public List<ModeloOrder> findBySalesMan(Integer id) {
+        return OrderRepository.findBySalesMan(id);
     }
 }

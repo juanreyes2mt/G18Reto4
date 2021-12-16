@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import reto4.reto4.interfaces.InterfaceOrder;
 import reto4.reto4.modelo.ModeloOrder;
+import reto4.reto4.modelo.ModeloUser;
 
 @Repository
 public class RepositorioOrder {
@@ -73,5 +74,9 @@ public class RepositorioOrder {
         query.addCriteria(dateCriteria);
         List<ModeloOrder> orders = mongoTemplate.find(query, ModeloOrder.class);
         return orders;
+    }
+
+    public List<ModeloOrder> findBySalesMan(Integer id) {
+        return OrderCRUDRepository.findBySalesMan(id);
     }
 }

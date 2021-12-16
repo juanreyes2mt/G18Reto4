@@ -23,20 +23,35 @@ public class ServiciosUser {
     }
 
     public ModeloUser create(ModeloUser user) {
+        /*
         if (user.getId() == null) {
             return user;            
         }else {
-            Optional<ModeloUser> e = UserRepository.getUser(user.getId());
+             
+        }*/
+        //Obtiene el maximo id existente en la colección
+        Optional <ModeloUser> userIdMaximo = UserRepository.lastUserId();
+
+        //Si el id del Usuario que se recibe como parametro es nulo, entonces se valida el máximo id de la coleccióny le suma 1
+        if (user.getId() == null) {
+            //Valida el máximo id generado, si no hay  ninguno, el id será 1
+            if (userIdMaximo.isEmpty())
+                user.setId(1);
+            //Si retorna información suma 1 al máximo id existente y lo asigna al código del id
+            else
+                user.setId(userIdMaximo.get().getId() + 1); 
+        }
+
+        Optional<ModeloUser> e = UserRepository.getUser(user.getId());
             if (e.isEmpty()) {
-                if (emailExists(user.getEmail())==false){
+                if (emailExists(user.getEmail()) == false){
                     return UserRepository.create(user);
                 }else{
                     return user;
                 }
             }else{
                 return user;
-            }           
-        }
+            }      
     }
 
     public ModeloUser update(ModeloUser user) {

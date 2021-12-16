@@ -1,7 +1,7 @@
 package reto4.reto4;
 
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
+//import java.text.SimpleDateFormat;
+//import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -22,16 +22,20 @@ public class Reto4Application implements CommandLineRunner {
 	private InterfaceUser interfaceUser;
 	@Autowired
     private InterfaceOrder interfaceOrder;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Reto4Application.class, args);
 	}
 
 	@Override
 	public void run(String...args) throws Exception {
-		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		//System.out.println("Pendiente");
+		//System.out.println("Usuario :" + UsercrudRepository.findTopByOrderByIdDesc().get());
+
+		//SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		interfaceProduct.deleteAll();
 		interfaceUser.deleteAll();
 		interfaceOrder.deleteAll();
 	}
-}
+}//51min //52.09min

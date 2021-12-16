@@ -9,13 +9,12 @@ import reto4.reto4.modelo.ModeloUser;
 public interface InterfaceUser extends MongoRepository <ModeloUser, Integer> {
     Optional<ModeloUser> findByEmail(String email);
     Optional<ModeloUser> findByEmailAndPassword(String email,String password);
-    Optional<ModeloUser> findByNameorEmail(String name,String email);
+    //Optional<ModeloUser> findByNameorEmail(String name,String email);
 
     //Para seleccionar el usuario con el id maximo
     Optional<ModeloUser> findTopByOrderByIdDesc();
 
     List<ModeloUser> findBybirthtDay(Date date);
-    List<ModeloUser> findByMonthBithtDay(String monthBirthtDay);
+    List<ModeloUser> findByMonthBirthtDay(String monthBirthtDay);
     List<ModeloUser> findOneByOrderByIdDesc();
 }
-
