@@ -61,9 +61,34 @@ public class ControladorOrder {
        return orderService.findByZone(zona);
     }
 
+    //Ordenes de un asesor
+    @GetMapping("/salesman/{id}")
+    public List<ModeloOrder> ordersSalesManByID(@PathVariable("id") Integer id){
+        return orderService.ordersSalesManByID(id);
+    }
+
+    //Ordenes de un asesor x Estado
+    @GetMapping("/state/{state}/{id}")
+    public List<ModeloOrder> ordersSalesManByState(@PathVariable("state") String state, @PathVariable("id") Integer id){
+        return orderService.ordersSalesManByState(state, id);
+    }
+    
+    //Ordenes de un asesor x fecha
+    @GetMapping("/date/{date}/{id}")
+    public List<ModeloOrder> ordersSalesManByDate(@PathVariable("date") String dateStr, @PathVariable("id") Integer id) {
+        return orderService.ordersSalesManByDate(dateStr,id);
+    }
+
+    /*
     //Ordenes de pedido asociadas a vendedores
     @GetMapping("/salesman/{id}")
     public List<ModeloOrder> findBySalesMan(@PathVariable("id") Integer id){
        return orderService.findBySalesMan(id);
     }
+
+    //Ordenes de pedido segun estado
+    @GetMapping("/state/{status}/{id}")
+    public List<ModeloOrder> ordersSalesManByState(@PathVariable("status" + "id") String status, Integer id){
+       return orderService.ordersSalesManByState(status, id);
+    }    */
 }

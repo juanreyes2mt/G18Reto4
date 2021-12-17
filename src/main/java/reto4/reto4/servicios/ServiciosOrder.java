@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import reto4.reto4.modelo.ModeloOrder;
-import reto4.reto4.modelo.ModeloUser;
+//import reto4.reto4.modelo.ModeloUser;
 import reto4.reto4.repositorio.RepositorioOrder;
 
 @Service
@@ -78,16 +78,23 @@ public class ServiciosOrder {
     public List<ModeloOrder> findByZone(String zona) {
         return OrderRepository.findByZone(zona);
     }
-
-    public List<ModeloOrder> ordersSalesManByDate(String dateStr, int id) {
-        return OrderRepository.ordersSalesManByDate(dateStr, id);
-    }
  
-    public List<ModeloOrder> ordersSalesManByState(String state, Integer id) {
+    //Ordenes de un asesor
+    public List<ModeloOrder> ordersSalesManByID(Integer id){
+        return OrderRepository.ordersSalesManByID(id);
+    }
+
+    //Ordenes de un asesor x Estado
+    public List<ModeloOrder> ordersSalesManByState(String state, Integer id){
         return OrderRepository.ordersSalesManByState(state, id);
     }
 
+    //Ordenes de un asesor x fecha
+    public List<ModeloOrder> ordersSalesManByDate(String dateStr, Integer id) {
+        return OrderRepository.ordersSalesManByDate(dateStr,id);
+    }
+    /*
     public List<ModeloOrder> findBySalesMan(Integer id) {
         return OrderRepository.findBySalesMan(id);
-    }
+    }*/
 }

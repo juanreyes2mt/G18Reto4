@@ -52,31 +52,42 @@ public class RepositorioOrder {
         return OrderCRUDRepository.findTopByOrderByIdDesc();
     }
 
+    //Ordenes de un asesor
+    public List<ModeloOrder> ordersSalesManByID(Integer id) {
+        Query query = new Query();
+        Criteria criterio = Criteria.where("salesMan.id").is(id);
+        query.addCriteria(criterio);
+        List<ModeloOrder> orders = mongoTemplate.find(query, ModeloOrder.class);
+        return orders;
+    }
+    
+    //Ordenes de un asesor x Estado
+    public List<ModeloOrder> ordersSalesManByState(String state, Integer id) {
+        Query query = new Query();
+        Criteria criterio = Criteria.where("salesMan.id").is(id)
+                            .and("status").is(state);
+        query.addCriteria(criterio);
+        List<ModeloOrder> orders = mongoTemplate.find(query, ModeloOrder.class);
+        return orders;
+    }
+    
+    //Ordenes de un asesor x Fecha
     public List<ModeloOrder> ordersSalesManByDate(String dateStr, Integer id) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        
+	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         Query query = new Query();
+        
         Criteria dateCriteria = Criteria.where("registerDay")
-            .gte(LocalDate.parse(dateStr, dtf).minusDays(1).atStartOfDay())
-            .lt(LocalDate.parse(dateStr, dtf).plusDays(2).atStartOfDay())
-            .and("salesMan.id"). is (id);
+			.gte(LocalDate.parse(dateStr, dtf).minusDays(1).atStartOfDay())
+			.lt(LocalDate.parse(dateStr, dtf).plusDays(1).atStartOfDay())
+			.and("salesMan.id").is(id);
         
         query.addCriteria(dateCriteria);
+        
         List<ModeloOrder> orders = mongoTemplate.find(query, ModeloOrder.class);
-        return orders;
+        return orders;       
     }
-
-    public List<ModeloOrder> ordersSalesManByState(String state, Integer id){
-        Query query = new Query();
-        Criteria dateCriteria = Criteria.where("salesMan.id").is(id)
-            .and("status").is(state);
-            
-        query.addCriteria(dateCriteria);
-        List<ModeloOrder> orders = mongoTemplate.find(query, ModeloOrder.class);
-        return orders;
-    }
-
+    /*
     public List<ModeloOrder> findBySalesMan(Integer id) {
         return OrderCRUDRepository.findBySalesMan(id);
-    }
+    }*/
 }

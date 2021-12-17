@@ -18,10 +18,11 @@ public interface InterfaceOrder extends MongoRepository <ModeloOrder, Integer> {
     @Query("{'status':?0}")
     List<ModeloOrder> findByStatus (final String status);
 
+    /*
     //Retorna las ordenes de pedido que coincidad con el vendedor
     @Query("{'salesMan.id':?0}")
     List<ModeloOrder> findBySalesMan (final Integer id);
-
+    */
     //Seleccionar la orden con el ID mayor
     Optional<ModeloOrder> findTopByOrderByIdDesc();
 }
