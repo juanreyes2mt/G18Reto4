@@ -119,5 +119,10 @@ public class ServiciosUser {
             return usuario.get();
         }
     }
+     //Reto 5
+    public List<ModeloUser> birthtDayList(String monthBirthtDay) {
+        return UserRepository.birthtDayList(monthBirthtDay);
+    }
+    
 }
 

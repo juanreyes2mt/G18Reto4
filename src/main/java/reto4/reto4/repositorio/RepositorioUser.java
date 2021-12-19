@@ -46,4 +46,11 @@ public class RepositorioUser {
     public Optional<ModeloUser> lastUserId(){
         return UserCRUDRepository.findTopByOrderByIdDesc();
     }
+    //Reto5
+   
+    public List<ModeloUser> birthtDayList(String monthBirthtDay) {
+        return UserCRUDRepository.findByMonthBirthtDay(monthBirthtDay);
+    }
+
+
 }

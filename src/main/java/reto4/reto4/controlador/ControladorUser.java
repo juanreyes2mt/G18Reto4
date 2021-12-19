@@ -63,4 +63,11 @@ public class ControladorUser {
     public boolean emailExists(@PathVariable("email") String email) {
         return UserService.emailExists(email);
     }
+    //Reto 5
+    @GetMapping("/birthday/{month}")
+    public List<ModeloUser> birthtDayList(@PathVariable("month") String monthBirthtDay) {
+        return UserService.birthtDayList(monthBirthtDay);
+    }
+    
+   
 }

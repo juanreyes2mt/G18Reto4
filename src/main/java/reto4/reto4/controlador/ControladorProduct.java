@@ -53,6 +53,16 @@ public class ControladorProduct {
     public boolean delete(@PathVariable("reference") String reference) {
         return ProductService.delete(reference);
     }
+    //Reto 5
+    @GetMapping("/price/{price}")
+    public List<ModeloProduct> gadgetsByPrice(@PathVariable("price") double precio) {
+        return ProductService.productByPrice(precio);
+    }
+    //Reto 5
+    @GetMapping("/description/{description}")
+    public List<ModeloProduct> findByDescriptionLike(@PathVariable("description") String description) {
+        return ProductService.findByDescriptionLike(description);
+    }
 
 }
 

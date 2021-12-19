@@ -79,16 +79,4 @@ public class ControladorOrder {
         return orderService.ordersSalesManByDate(dateStr,id);
     }
 
-    /*
-    //Ordenes de pedido asociadas a vendedores
-    @GetMapping("/salesman/{id}")
-    public List<ModeloOrder> findBySalesMan(@PathVariable("id") Integer id){
-       return orderService.findBySalesMan(id);
-    }
-
-    //Ordenes de pedido segun estado
-    @GetMapping("/state/{status}/{id}")
-    public List<ModeloOrder> ordersSalesManByState(@PathVariable("status" + "id") String status, Integer id){
-       return orderService.ordersSalesManByState(status, id);
-    }    */
 }

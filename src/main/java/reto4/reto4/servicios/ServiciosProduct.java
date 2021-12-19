@@ -67,5 +67,13 @@ public class ServiciosProduct {
             return true;
         }).orElse(false);
         return aBoolean;
+    } 
+    //Reto 5
+   public List<ModeloProduct> productByPrice(double price) {
+        return ProductRepository.productByPrice(price);
+    }
+
+    public List<ModeloProduct> findByDescriptionLike(String description) {
+        return ProductRepository.findByDescriptionLike(description);
     }
 }
