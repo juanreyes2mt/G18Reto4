@@ -64,6 +64,12 @@ public class ServiciosUser {
                 if (user.getName() != null) {
                     userDb.get().setName(user.getName());
                 }
+                if(user.getBirthtDay()!=null){
+                    userDb.get().setBirthtDay(user.getBirthtDay());
+                }
+                if(user.getMonthBirthtDay()!=null){
+                    userDb.get().setMonthBirthtDay(user.getMonthBirthtDay());
+                }
                 if (user.getAddress() != null) {
                     userDb.get().setAddress(user.getAddress());
                 }
@@ -79,6 +85,10 @@ public class ServiciosUser {
                 if (user.getZone() != null) {
                     userDb.get().setZone(user.getZone());
                 }
+                if(user.getType()!=null){
+                    userDb.get().setType(user.getType());
+                }
+                
                 UserRepository.update(userDb.get());
                 return userDb.get();
             } else {
